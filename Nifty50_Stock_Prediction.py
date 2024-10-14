@@ -1,12 +1,9 @@
 import streamlit as st
-#import joblib
-import pickle
+import joblib
 import pandas as pd
 
 # Load the trained model
-# Load the model from a file
-with open('random_forest_model.pkl', 'rb') as file:
-    model = pickle.load(file)
+model = joblib.load('random_forest_model.pkl')
 
 # Title of the app
 st.title("Nifty 50 Prediction Model")
