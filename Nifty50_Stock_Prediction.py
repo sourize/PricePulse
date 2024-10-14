@@ -6,7 +6,7 @@ import pandas as pd
 # Load the trained model
 # Load the model from a file
 with open('random_forest_model.pkl', 'rb') as file:
-    loaded_model = pickle.load(file)
+    model = pickle.load(file)
 
 # Title of the app
 st.title("Nifty 50 Prediction Model")
