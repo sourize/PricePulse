@@ -1,4 +1,4 @@
-# Nifty 50 Stock Price Prediction Using LSTM
+# PricePulse: Nifty 50 Stock Price Prediction Using LSTM
 
 ## Project Overview
 This project focuses on predicting the stock prices of the Nifty 50 index using a Long Short-Term Memory (LSTM) neural network. Initially, a regression model was implemented to predict stock prices, achieving an accuracy of 90%. Building upon that foundation, this project leverages LSTM, a specialized type of Recurrent Neural Network (RNN), to capture temporal dependencies in the stock market data for improved predictions.
