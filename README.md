@@ -25,11 +25,11 @@ Ensure you have the following installed:
 ### Installation
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/nifty50_lstm.git
+   git clone https://github.com/sourize/stockpredictionmodel.git
    ```
 2. Navigate to the project directory:
    ```bash
-   cd nifty50_lstm
+   cd stockpredictionmodel
    ```
 3. Install the required libraries:
    ```bash
