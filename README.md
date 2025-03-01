@@ -3,6 +3,8 @@
 ## Project Overview
 This project focuses on predicting the stock prices of the Nifty 50 index using a Long Short-Term Memory (LSTM) neural network. Initially, a regression model was implemented to predict stock prices, achieving an accuracy of 90%. Building upon that foundation, this project leverages LSTM, a specialized type of Recurrent Neural Network (RNN), to capture temporal dependencies in the stock market data for improved predictions.
 
+_Read my Learning [here](https://sourish.xyz/blog/predicting-nifty50-stock-prices-with-lstm)_
+
 ## Key Features
 - **Data Preprocessing**: Cleaned and normalized stock price data to prepare it for the LSTM model.
 - **Feature Engineering**: Used key financial metrics to enhance the model's learning capabilities.
