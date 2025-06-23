@@ -11,7 +11,7 @@
   
   *Harnessing the power of LSTM neural networks to decode Nifty 50 stock patterns*
   
-  [🔗 Live Demo](https://huggingface.co/spaces/sourize/Nifty50) • [📚 Read My Journey](https://sourish.xyz/blog/predicting-nifty50-stock-prices-using-lstm) • [📊 Results](#results)
+  [🔗 Live Demo](https://huggingface.co/spaces/sourize/Nifty50) • [📚 Read My Journey](https://sourish.xyz/thoughts/predicting-nifty50-stock-prices-using-lstm) • [📊 Results](#results)
   
 </div>
 
