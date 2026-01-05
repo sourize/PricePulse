@@ -12,9 +12,9 @@ export interface PredictionResponse {
     confidence: number;
 }
 
-// Sanitize URL: remove trailing slash if present
+// Sanitize URL: remove all trailing slashes (e.g., https://site.com// -> https://site.com)
 const RAW_API_URL = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000";
-const API_URL = RAW_API_URL.replace(/\/$/, "");
+const API_URL = RAW_API_URL.replace(/\/+$/, "");
 
 export async function fetchPrediction(data: PredictionRequest): Promise<PredictionResponse> {
     const controller = new AbortController();
