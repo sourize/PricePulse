@@ -12,14 +12,19 @@ export interface PredictionResponse {
     confidence: number;
 }
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000";
+// Sanitize URL: remove trailing slash if present
+const RAW_API_URL = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000";
+const API_URL = RAW_API_URL.replace(/\/$/, "");
 
 export async function fetchPrediction(data: PredictionRequest): Promise<PredictionResponse> {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second limit
 
     try {
-        const response = await fetch(`${API_URL}/predict`, {
+        const targetUrl = `${API_URL}/predict`;
+        console.log(`[PricePulse API] POST requesting: ${targetUrl}`);
+
+        const response = await fetch(targetUrl, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
