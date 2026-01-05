@@ -1,10 +1,7 @@
 import Link from "next/link";
-import { Activity, Github } from "lucide-react";
+import { Activity, Github, Globe } from "lucide-react";
 
 export function TopBar() {
-    const currentTime = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false });
-    const marketStatus = "CLOSED"; // Mock status
-
     return (
         <nav className="sticky top-0 z-50 w-full border-b border-surface-800 bg-navy-900/95 backdrop-blur">
             <div className="container flex h-14 max-w-3xl mx-auto items-center justify-between px-4">
@@ -20,18 +17,19 @@ export function TopBar() {
                         href="https://sourish.me"
                         target="_blank"
                         rel="noreferrer"
-                        className="hidden sm:block text-sm font-medium text-muted-600 hover:text-accent-cyan transition-colors"
+                        className="flex items-center space-x-2 text-sm font-medium text-muted-600 hover:text-accent-cyan transition-colors"
                     >
-                        sourish.me
+                        <Globe className="h-5 w-5" />
+                        <span className="hidden sm:inline">sourish.me</span>
                     </Link>
                     <Link
                         href="https://github.com/sourize/PricePulse"
                         target="_blank"
                         rel="noreferrer"
-                        className="text-muted-600 transition-colors hover:text-white"
+                        className="flex items-center space-x-2 text-sm font-medium text-muted-600 hover:text-accent-cyan transition-colors"
                     >
                         <Github className="h-5 w-5" />
-                        <span className="sr-only">GitHub</span>
+                        <span className="hidden sm:inline">GitHub</span>
                     </Link>
                 </div>
             </div>
