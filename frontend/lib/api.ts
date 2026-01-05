@@ -18,7 +18,7 @@ const API_URL = RAW_API_URL.replace(/\/$/, "");
 
 export async function fetchPrediction(data: PredictionRequest): Promise<PredictionResponse> {
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second limit
+    const timeoutId = setTimeout(() => controller.abort(), 90000); // 90 second limit for Render cold starts
 
     try {
         const targetUrl = `${API_URL}/predict`;
