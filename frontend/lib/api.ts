@@ -15,6 +15,9 @@ export interface PredictionResponse {
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000";
 
 export async function fetchPrediction(data: PredictionRequest): Promise<PredictionResponse> {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second limit
+
     try {
         const response = await fetch(`${API_URL}/predict`, {
             method: "POST",
@@ -22,7 +25,10 @@ export async function fetchPrediction(data: PredictionRequest): Promise<Predicti
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(data),
+            signal: controller.signal,
         });
+
+        clearTimeout(timeoutId);
 
         if (!response.ok) {
             const errorData = await response.json().catch(() => ({}));
@@ -30,15 +36,6 @@ export async function fetchPrediction(data: PredictionRequest): Promise<Predicti
         }
 
         const result = await response.json();
-
-        // Map backend response to frontend type if necessary, 
-        // assuming backend returns compatible structure.
-        // Based on app.py analysis, backend returns straight JSON.
-        // We'll trust the return type matches for now or map it.
-        // Backend keys: "prediction", "forecast" (list), "direction", "confidence" (maybe?)
-        // Let's ensure the backend actually returns these. 
-        // If not, we might need to adjust backend. 
-        // Start by just returning raw JSON cast to type.
 
         return {
             prediction: result.predicted_price, // Backend uses "predicted_price"
@@ -48,7 +45,13 @@ export async function fetchPrediction(data: PredictionRequest): Promise<Predicti
         };
 
     } catch (error: any) {
+        clearTimeout(timeoutId);
         console.error("API Error:", error);
+
+        if (error.name === 'AbortError') {
+            throw new Error("Request timed out. The backend is likely asleep or waking up. Please try again in a moment.");
+        }
+
         throw new Error(error.message || "Network error. Is the backend running?");
     }
 }
